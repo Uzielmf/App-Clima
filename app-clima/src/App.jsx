@@ -1,33 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import { Box, Button } from '@mui/material'
+import SelectedCity from './components/SelectedCity'
+import NextFiveDays from './components/NextFiveDays'
+import DatosToday from './components/DatosToday'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [climaActual, setClimaActual] = useState(null)
+  const [climaProximo, setClimaProximo] = useState(null)
+  const [city,setCity] = useState('lima')
+  const [porcentaje,setPorcentaje] = useState(40)
+
+  // const apiKey = 'bafb3bef1ccb9f00b7567afab00a77cf'
+
+
+  // const link = `https://api.openweathermap.org/data/2.5/weather?q=guadalajara&appid=$07e5d768f4b675ac7a669adb679d000c`
+
+  const getData = async () =>{
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=bafb3bef1ccb9f00b7567afab00a77cf`)
+    const datos = await res.json()
+    setClimaActual(datos)
+    console.log(climaActual);
+  }
+
+  useEffect(()=>{
+    getData
+  },[])
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+    {/* Contenedor general */}
+      <div className='container-general'> 
+
+        {/* Ciudad Seleccionada */}
+        <SelectedCity getData={getData}/>
+
+
+
+        <div className='details'>
+
+          {/* Contenedor del clima de los proximo 5 dias */}
+          <NextFiveDays/>
+
+
+          {/* Contenedor de los datos del clima del dia */}
+          
+          <div className='datos-today'>
+          <DatosToday climaActual={climaActual} porcentaje={porcentaje}/>
+          </div>
+
+
+
+        </div>
+
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
