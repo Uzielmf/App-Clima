@@ -10,13 +10,13 @@ function DatosToday({climaActual, porcentaje}) {
           
           <Box className='card-name'>
             <h4 className='letter-gray'>Wind status</h4>
-            <p>Estado del viendo <small>mph</small></p>
+            <p className='big-letter less-margin'>{climaActual?.wind.speed} <small>mph</small></p>
             <p>icono WSW</p>
           </Box>
 
-          <Box className='card-name'>
-            <h4 className='letter-gray'>Humidity</h4>
-            <p>Porcentaje%</p>
+          <Box className='card-name2'>
+            <h4 className='letter-gray '>Humidity</h4>
+            <p className='big-letter less-margin'>{porcentaje}%</p>
             <div className='porcentaje-levels'>
               <small className='letter-gray'>0</small>
               <small className='letter-gray'>50</small>
@@ -25,16 +25,17 @@ function DatosToday({climaActual, porcentaje}) {
             <div className='porcentaje' style={{width:`${porcentaje}%`}}>
             </div>
             
+            
           </Box>
 
           <Box className='card-name'>
             <h5 className='letter-gray'>Visibility</h5>
-            <p>Miles</p>
+            <p className='big-letter less-margin'> {climaActual?.visibility} <small>miles</small></p>
           </Box>
           
           <Box className='card-name'>
             <h5 className='letter-gray'>Air Pressure</h5>
-            <p>998 mb</p>
+            <p className='big-letter less-margin'>{climaActual?.main.pressure} <small>mb</small></p>
           </Box>
           
           </Box>
