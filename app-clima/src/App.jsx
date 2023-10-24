@@ -37,6 +37,10 @@ function App() {
 
   useEffect(()=>{
     getData()
+  },[grados])
+
+  useEffect(()=>{
+    getData()
   },[city])
 
   return (

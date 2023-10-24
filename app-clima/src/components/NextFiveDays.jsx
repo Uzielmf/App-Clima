@@ -5,8 +5,8 @@ function NextFiveDays({setGrados}) {
   return (
     <Box sx={{pt: '13%', pl:'8%'}}>
       <div className='change-units'> 
-      <button onClick={setGrados('imperial')} className='farenheits'>F</button>
-      <button onClick={setGrados('metric')} className='Celsius'>C</button>
+      <button onClick={()=>{setGrados('imperial')}} className='farenheits'>F</button>
+      <button onClick={()=>{setGrados('metric')}} className='Celsius'>C</button>
       </div>
           <div className='container-week'>
             <Box className='card-day'>

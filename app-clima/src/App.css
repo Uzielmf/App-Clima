@@ -153,7 +153,13 @@ p{
   color: rgba(231, 231, 235, 1);
 }
 
-@media (max-width: 400px){
+.input-search{
+  border: 1px solid rgba(97, 100, 117, 1);
+  color:rgba(97, 100, 117, 1); 
+  height: 1rem;
+}
+
+@media (max-width: 450px){
   .container-general{
     display: grid;
     grid-template-columns: auto;
@@ -211,5 +217,9 @@ p{
     justify-content: space-between;
     background-color: rgba(30, 33, 58, 1);
     padding: 5% 8% 10% 8%;
+  }
+
+  .change-units{
+    display: none;
   }
 }
